@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div>
+        <button id="minus">-</button> <input type="number" id="r"> <button id="plus">+</button>
+        <p>r = <span id="aaa"></span></p>
+        <p>r<sup>2</sup> = <span id="square"></span></p>
+        <p>r<sup>3</sup> = <span id="cube"></span></p>
+    </div> -->
+
+
+    <div id="app">
+        <!-- 事件，双向绑定 -->
+        <button @click="minus">-</button> <input type="number" v-model="r"> <button @click="plus">+</button>
+        <!-- 插值绑定 -->
+        <p>r = <span>{{r}}</span></p>
+        <!-- 计算属性 -->
+        <p>r<sup>2</sup> = <span>{{square}}</span></p>
+        <p>r<sup>3</sup> = <span>{{cube}}</span></p>
+    </div>
+    <!-- <script src="./Responsive.js"></script> -->
+    <script src="./Watcher.js"></script>
+    <script src="./Obsever.js"></script>
+    <script src="./Compile.js"></script>
+    <script src="./due/index.js"></script>
+
+    <script>
+        const vm = new Vm({
+            ele: '#app',
+            data: {
+                r: 2,
+            },
+
+            method: {
+                plus() {                    
+                    this.r += 1
+                },
+                minus() {
+                    this.r -= 1
+                }
+            },
+            computed: {
+                square() {
+                    return Math.pow(this.r,2);
+                },
+
+                cube(){
+                    return Math.pow(this.r,3);
+                }
+            },
+
+            created(){
+                // console.log('创建完毕',this.square)
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>
